@@ -6,8 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C48DD2B42F7422B600541862 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C48DD2B32F7422A700541862 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C48DD2902F73FFAC00541862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C48DD23E2F73F38600541862 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C48DD2452F73F38600541862;
+			remoteInfo = PokeDex;
+		};
+		C48DD2AA2F7402B900541862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C48DD23E2F73F38600541862 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C48DD2452F73F38600541862;
+			remoteInfo = PokeDex;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		C48DD2462F73F38600541862 /* PokeDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C48DD28C2F73FFAC00541862 /* PokeDexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokeDexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C48DD2A42F7402B900541862 /* PokeDexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokeDexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C48DD2B32F7422A700541862 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +40,34 @@
 			path = PokeDex;
 			sourceTree = "<group>";
 		};
+		C48DD28D2F73FFAC00541862 /* PokeDexTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PokeDexTests;
+			sourceTree = "<group>";
+		};
+		C48DD2A52F7402B900541862 /* PokeDexUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PokeDexUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C48DD2432F73F38600541862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C48DD2892F73FFAC00541862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C48DD2A12F7402B900541862 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,7 +81,10 @@
 			isa = PBXGroup;
 			children = (
 				C48DD2482F73F38600541862 /* PokeDex */,
+				C48DD28D2F73FFAC00541862 /* PokeDexTests */,
+				C48DD2A52F7402B900541862 /* PokeDexUITests */,
 				C48DD2472F73F38600541862 /* Products */,
+				C48DD2B32F7422A700541862 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -41,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				C48DD2462F73F38600541862 /* PokeDex.app */,
+				C48DD28C2F73FFAC00541862 /* PokeDexTests.xctest */,
+				C48DD2A42F7402B900541862 /* PokeDexUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +123,52 @@
 			productReference = C48DD2462F73F38600541862 /* PokeDex.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C48DD28B2F73FFAC00541862 /* PokeDexTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C48DD2922F73FFAC00541862 /* Build configuration list for PBXNativeTarget "PokeDexTests" */;
+			buildPhases = (
+				C48DD2882F73FFAC00541862 /* Sources */,
+				C48DD2892F73FFAC00541862 /* Frameworks */,
+				C48DD28A2F73FFAC00541862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C48DD2912F73FFAC00541862 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C48DD28D2F73FFAC00541862 /* PokeDexTests */,
+			);
+			name = PokeDexTests;
+			packageProductDependencies = (
+			);
+			productName = PokeDexTests;
+			productReference = C48DD28C2F73FFAC00541862 /* PokeDexTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C48DD2A32F7402B900541862 /* PokeDexUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C48DD2AC2F7402B900541862 /* Build configuration list for PBXNativeTarget "PokeDexUITests" */;
+			buildPhases = (
+				C48DD2A02F7402B900541862 /* Sources */,
+				C48DD2A12F7402B900541862 /* Frameworks */,
+				C48DD2A22F7402B900541862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C48DD2AB2F7402B900541862 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C48DD2A52F7402B900541862 /* PokeDexUITests */,
+			);
+			name = PokeDexUITests;
+			packageProductDependencies = (
+			);
+			productName = PokeDexUITests;
+			productReference = C48DD2A42F7402B900541862 /* PokeDexUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +181,14 @@
 				TargetAttributes = {
 					C48DD2452F73F38600541862 = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					C48DD28B2F73FFAC00541862 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = C48DD2452F73F38600541862;
+					};
+					C48DD2A32F7402B900541862 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = C48DD2452F73F38600541862;
 					};
 				};
 			};
@@ -100,12 +207,28 @@
 			projectRoot = "";
 			targets = (
 				C48DD2452F73F38600541862 /* PokeDex */,
+				C48DD28B2F73FFAC00541862 /* PokeDexTests */,
+				C48DD2A32F7402B900541862 /* PokeDexUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C48DD2442F73F38600541862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C48DD28A2F73FFAC00541862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C48DD2A22F7402B900541862 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,10 +242,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48DD2B42F7422B600541862 /* README.md in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C48DD2882F73FFAC00541862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C48DD2A02F7402B900541862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C48DD2912F73FFAC00541862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C48DD2452F73F38600541862 /* PokeDex */;
+			targetProxy = C48DD2902F73FFAC00541862 /* PBXContainerItemProxy */;
+		};
+		C48DD2AB2F7402B900541862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C48DD2452F73F38600541862 /* PokeDex */;
+			targetProxy = C48DD2AA2F7402B900541862 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C48DD24F2F73F38800541862 /* Debug */ = {
@@ -261,6 +412,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,6 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +460,88 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C48DD2932F73FFAC00541862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7DSPSWXXC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MicheleManniello.PokeDexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokeDex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PokeDex";
+			};
+			name = Debug;
+		};
+		C48DD2942F73FFAC00541862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7DSPSWXXC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MicheleManniello.PokeDexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokeDex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PokeDex";
+			};
+			name = Release;
+		};
+		C48DD2AD2F7402B900541862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7DSPSWXXC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MicheleManniello.PokeDexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PokeDex;
+			};
+			name = Debug;
+		};
+		C48DD2AE2F7402B900541862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G7DSPSWXXC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MicheleManniello.PokeDexUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PokeDex;
 			};
 			name = Release;
 		};
@@ -327,6 +562,24 @@
 			buildConfigurations = (
 				C48DD2522F73F38800541862 /* Debug */,
 				C48DD2532F73F38800541862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C48DD2922F73FFAC00541862 /* Build configuration list for PBXNativeTarget "PokeDexTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C48DD2932F73FFAC00541862 /* Debug */,
+				C48DD2942F73FFAC00541862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C48DD2AC2F7402B900541862 /* Build configuration list for PBXNativeTarget "PokeDexUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C48DD2AD2F7402B900541862 /* Debug */,
+				C48DD2AE2F7402B900541862 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
