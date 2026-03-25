@@ -7,65 +7,67 @@
 
 import XCTest
 
+import XCTest
+
+/// Test d'interfaccia (UI Tests) per l'applicazione PokeDex.
+///
+/// Verifica i flussi utente principali: ricerca, navigazione e interazione con componenti custom.
 final class PokeDexUITests: XCTestCase {
     let app = XCUIApplication()
 
+    /// Configura l'ambiente di test prima di ogni esecuzione.
     override func setUpWithError() throws {
-        // Ferma i test al primo errore per non perdere tempo
+        // Ferma i test al primo errore per facilitare il debug.
         continueAfterFailure = false
+        // Avvia l'applicazione.
         app.launch()
     }
 
-    /// UI TEST 1: Verifica la ricerca e il filtraggio dei Pokémon.
+    /// Verifica che la funzionalità di ricerca filtri correttamente la lista dei Pokémon a schermo.
     func test_search_filtering_works() {
+        // Cerchiamo la SearchBar tramite il suo placeholder/label
         let searchField = app.textFields["Cerca Pokémon"]
         XCTAssertTrue(searchField.waitForExistence(timeout: 5), "La barra di ricerca dovrebbe essere visibile")
         
         searchField.tap()
         searchField.typeText("Bulbasaur")
         
-        // Verifichiamo che appaia la cella con il nome giusto
+        // Verifichiamo che la lista mostri solo il risultato pertinente
         let pokemonCell = app.staticTexts["Bulbasaur"]
-        XCTAssertTrue(pokemonCell.exists, "Dovrebbe mostrare Bulbasaur dopo la ricerca")
+        XCTAssertTrue(pokemonCell.exists, "La lista dovrebbe mostrare 'Bulbasaur' come risultato del filtro")
     }
 
-    /// UI TEST 2: Verifica la navigazione verso il dettaglio al tap sulla riga.
+    /// Verifica che il tap su una riga della lista porti l'utente alla schermata di dettaglio.
     func test_navigation_to_detail() {
-        // 1. Cerchiamo il bottone della riga
+        // Identifichiamo il bottone della riga tramite l'accessibilityIdentifier impostato nella View
         let pokemonButton = app.buttons["pokemonRow_bulbasaur"]
         
-        // 2. Aspetta che appaia
-        XCTAssertTrue(pokemonButton.waitForExistence(timeout: 20), "Il tasto di Bulbasaur non è apparso")
+        XCTAssertTrue(pokemonButton.waitForExistence(timeout: 20), "Il tasto di Bulbasaur non è apparso in tempo")
         
-        // 3. Tap (ora che è un bottone, Xcode non fallirà)
         pokemonButton.tap()
         
-        // 4. Verifica navigazione
+        // Verifichiamo la presenza di un elemento tipico della DetailView
         let abilitiesLabel = app.staticTexts["Abilità"]
-        XCTAssertTrue(abilitiesLabel.waitForExistence(timeout: 10), "Schermata dettaglio non caricata")
+        XCTAssertTrue(abilitiesLabel.waitForExistence(timeout: 10), "La schermata di dettaglio non è stata caricata correttamente")
     }
 
-    /// UI TEST 3: Verifica che le sezioni collassabili funzionino.
+    /// Verifica il comportamento del componente `CollapsibleSection`.
+    ///
+    /// Testa il requisito obbligatorio: le sezioni devono essere inizialmente chiuse e aprirsi al tap.
     func test_collapsible_sections_expansion() {
-        // Entriamo nel dettaglio del primo Pokémon
         let pokemonButton = app.buttons["pokemonRow_bulbasaur"]
-        
-        // 2. Aspetta che appaia
-        XCTAssertTrue(pokemonButton.waitForExistence(timeout: 20), "Il tasto di Bulbasaur non è apparso")
-        
-        // 3. Tap (ora che è un bottone, Xcode non fallirà)
+        XCTAssertTrue(pokemonButton.waitForExistence(timeout: 10))
         pokemonButton.tap()
         
-        // Cerchiamo il bottone delle Abilità
+        // Identifichiamo l'intestazione della sezione "Abilità"
         let abilitiesButton = app.buttons["Abilità"]
-        XCTAssertTrue(abilitiesButton.exists)
+        XCTAssertTrue(abilitiesButton.exists, "Il bottone della sezione Abilità dovrebbe essere presente")
         
-        // Tap per espandere (requisito: inizialmente è collassato)
+        // Eseguiamo il tap per espandere il contenuto
         abilitiesButton.tap()
         
-        // Qui verifichiamo che appaia un elemento della lista (es. un pallino o testo dell'abilità)
-        // Usiamo un predicato per cercare un testo che inizia con il pallino dell'elenco puntato
+        // Verifichiamo che appaia un elemento della lista puntata (es. '• Overgrow')
         let bulletPoint = app.staticTexts.containing(NSPredicate(format: "label BEGINSWITH '•'")).firstMatch
-        XCTAssertTrue(bulletPoint.exists, "La lista delle abilità dovrebbe essere visibile dopo il tap")
+        XCTAssertTrue(bulletPoint.exists, "Il contenuto della sezione dovrebbe essere visibile dopo l'espansione")
     }
 }

@@ -21,6 +21,7 @@ final class GetPokemonListUseCase {
     ///   - offset: Punto di inizio.
     ///   - limit: Quanti elementi scaricare.
     /// - Returns: Lista di Pokemon pronti per la UI.
+    /// - Throws: Un errore se la chiamata al repository fallisce.
     func execute(offset: Int, limit: Int) async throws -> [PokemonModel] {
         return try await repository.getPokemonList(offset: offset, limit: limit)
     }

@@ -18,7 +18,6 @@ struct DetailView: View {
                     ProgressView()
                         .padding(.top, 50)
                 } else if let pokemon = viewModel.pokemonDetail {
-                    // Intestazione con Immagine e Nome
                     AsyncImage(url: pokemon.imageUrl) { image in
                         image.resizable()
                              .aspectRatio(contentMode: .fit)
@@ -31,7 +30,6 @@ struct DetailView: View {
                         .font(.largeTitle)
                         .bold()
                     
-                    // Altezza e Peso (Must Have 3)
                     HStack(spacing: 40) {
                         VStack {
                             Text("\(String(format: "%.1f", pokemon.height)) m")
@@ -48,19 +46,17 @@ struct DetailView: View {
                     .background(Color(.systemGray6))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     
-                    // Sezione Abilità Collassabile (Must Have 1)
-                    CollapsibleSection(
-                        title: "Abilità",
-                        isExpanded: $viewModel.isAbilitiesExpanded,
-                        items: pokemon.abilities
-                    )
-                    
-                    // Sezione Mosse Collassabile (Must Have 2)
-                    CollapsibleSection(
-                        title: "Mosse",
-                        isExpanded: $viewModel.isMovesExpanded,
-                        items: pokemon.moves
-                    )
+                    CollapsibleSection(title: "Abilità", isExpanded: $viewModel.isAbilitiesExpanded) {
+                        ForEach(pokemon.abilities,id:\.self) { ability in
+                            Text("• \(ability.capitalized)")
+                        }
+                    }
+
+                    CollapsibleSection(title: "Mosse", isExpanded: $viewModel.isMovesExpanded) {
+                        ForEach(pokemon.moves, id: \.self) { move in
+                            Text("• \(move.capitalized)")
+                        }
+                    }
                     
                 } else if let error = viewModel.errorMessage {
                     Text(error)
@@ -71,44 +67,12 @@ struct DetailView: View {
             .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
-        // Carica i dati all'apparizione della vista
         .task {
             await viewModel.loadDetail()
         }
     }
 }
 
-/// Componente riutilizzabile per creare sezioni collassabili.
-struct CollapsibleSection: View {
-    let title: String
-    @Binding var isExpanded: Bool
-    let items: [String]
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Button(action: { withAnimation { isExpanded.toggle() } }) {
-                HStack {
-                    Text(title)
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                    Spacer()
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .foregroundColor(.gray)
-                }
-                .padding()
-                .background(Color(.systemGray5))
-            }
-            
-            if isExpanded {
-                VStack(alignment: .leading, spacing: 8) {
-                    ForEach(items, id: \.self) { item in
-                        Text("• \(item)")
-                            .padding(.leading)
-                    }
-                }
-                .padding(.vertical)
-            }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 8))
-    }
+#Preview {
+    ContentView()
 }

@@ -20,18 +20,27 @@ final class HomeViewModel: ObservableObject {
     private var currentOffset = 0
     private let limit = 20
     
+    /// Inizializza il ViewModel con lo Use Case per i dati e il coordinatore per la navigazione.
+    /// - Parameters:
+    ///   - getPokemonListUseCase: Lo Use Case per il recupero dei dati.
+    ///   - coordinator: Il coordinatore per gestire i flussi di navigazione.
     init(getPokemonListUseCase: GetPokemonListUseCase, coordinator: AppCoordinator) {
         self.getPokemonListUseCase = getPokemonListUseCase
         self.coordinator = coordinator
     }
     
-    /// Filtra la lista in base al testo inserito nella barra di ricerca.
+    /// Restituisce la lista filtrata dei Pokemon in base al testo inserito nella barra di ricerca.
+    ///
+    /// Se `searchText` è vuoto, restituisce l'intera `pokemonList`. Il filtro non è case-sensitive.
     var filteredPokemon: [PokemonModel] {
         if searchText.isEmpty { return pokemonList }
         return pokemonList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
     
-    /// Carica la prossima pagina di Pokemon.
+    /// Carica asincronamente la prossima pagina di Pokemon.
+    ///
+    /// Incrementa automaticamente l'`currentOffset` in base al `limit` dopo ogni caricamento riuscito.
+    /// Impedisce chiamate multiple simultanee tramite il controllo sulla proprietà `isLoading`.
     func loadPokemon() async {
         guard !isLoading else { return }
         isLoading = true
@@ -46,6 +55,8 @@ final class HomeViewModel: ObservableObject {
         isLoading = false
     }
     
+    /// Naviga verso la schermata di dettaglio del Pokemon selezionato.
+    /// - Parameter pokemon: Il modello del Pokemon da visualizzare nel dettaglio.
     func selectPokemon(_ pokemon: PokemonModel) {
         coordinator?.goToDetail(pokemonName: pokemon.name.lowercased())
     }

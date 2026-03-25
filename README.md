@@ -1,4 +1,4 @@
-# PokéDex App - Clean Architecture & SwiftUI
+# PokéDex App
 
 Un'applicazione iOS moderna che utilizza la **PokeAPI** per visualizzare un elenco di Pokémon, con dettagli approfonditi, paginazione e ricerca.
 

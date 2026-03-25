@@ -14,9 +14,7 @@ struct HomeView: View {
     var body: some View {
         List {
             // Barra di ricerca integrata nella lista
-            Section {
-               SearchBar()
-            }
+            SearchBar()
             
             // Lista dei Pokemon filtrati
             ForEach(viewModel.filteredPokemon) { pokemon in
@@ -25,55 +23,61 @@ struct HomeView: View {
                 } label: {
                     PokemonRowView(pokemon: pokemon)
                 }
-                .buttonStyle(.plain) // Rimuove il colore blu del bottone standard
+                .buttonStyle(.plain)
                 .accessibilityIdentifier("pokemonRow_\(pokemon.name.lowercased())")
                 .onAppear {
+                    // Logica di paginazione: carica quando appare l'ultimo elemento della lista totale
                     if pokemon == viewModel.pokemonList.last {
                         Task { await viewModel.loadPokemon() }
                     }
                 }
             }
             
-            // Spinner di caricamento in fondo per la paginazione
+            // Spinner di caricamento per il feedback visivo della paginazione
             if viewModel.isLoading {
                 ProgressView()
-                    .frame(maxWidth:  .infinity)
+                    .frame(maxWidth: .infinity)
                     .padding()
             }
         }
         .navigationTitle("Pokedex")
-        // Caricamento iniziale
         .task {
+            // Caricamento iniziale all'apparizione della vista
             await viewModel.loadPokemon()
         }
     }
     
+    /// Genera una barra di ricerca personalizzata con pulsante di cancellazione.
+    /// - Returns: Una vista contenente un campo di testo e icone di sistema.
     @ViewBuilder
     func SearchBar() -> some View {
-        Section {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.secondary)
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(.secondary)
 
-                TextField("Cerca Pokémon", text: $viewModel.searchText)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
+            TextField("Cerca Pokémon", text: $viewModel.searchText)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
 
-                if !viewModel.searchText.isEmpty {
-                    Button {
-                        viewModel.searchText = ""
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.secondary)
-                    }
+            if !viewModel.searchText.isEmpty {
+                Button {
+                    viewModel.searchText = ""
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.secondary)
                 }
             }
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color(.systemGray6))
-            )
         }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemGray6))
+        )
+        .listRowInsets(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+        .listRowSeparator(.hidden) // Nasconde la linea della lista per la barra di ricerca
     }
-    
+}
+
+#Preview {
+    ContentView()
 }

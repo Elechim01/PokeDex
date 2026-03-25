@@ -18,6 +18,7 @@ final class GetPokemonDetailUseCase {
     /// Esegue il recupero dei dettagli.
     /// - Parameter name: Il nome del pokemon.
     /// - Returns: Il modello di dettaglio per la UI.
+    /// - Throws: Un errore se la chiamata al repository fallisce.
     func execute(for name: String) async throws -> PokemonDetailModel {
         return try await repository.getPokemonDetail(for: name)
     }

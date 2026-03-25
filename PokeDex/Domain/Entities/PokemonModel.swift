@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct PokemonModel: Identifiable,Equatable {
+/// Rappresenta un Pokemon sintetico per la visualizzazione nella lista principale.
+/// - Note: Conforme a `Identifiable` per l'uso diretto nelle `List` di SwiftUI.
+struct PokemonModel: Identifiable, Equatable, Hashable, Sendable {
     let id: Int
     let name: String
     let imageUrl: URL?
 }
-

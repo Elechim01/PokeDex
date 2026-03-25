@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Rappresenta le informazioni dettagliate di un Pokemon.
+///
+/// Include dati fisici, abilità e mosse, convertiti nelle unità di misura standard.
 struct PokemonDetailModel {
     let id: Int
     let name: String
